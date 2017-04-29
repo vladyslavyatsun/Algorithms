@@ -20,3 +20,5 @@
 *.tar.gz
 *.rar
 
+algorithms.iml
+target/
