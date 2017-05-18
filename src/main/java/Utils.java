@@ -15,7 +15,7 @@ public class Utils {
      * @param filePath - file path
      * @return matrix
      */
-    public int [][] readMatrix(String filePath) {
+    public static int [][] readMatrix(String filePath) {
         int matrix[][] = null;
         try {
             Scanner s = new Scanner(new File(filePath));
@@ -40,10 +40,8 @@ public class Utils {
         return matrix;
     }
 
-    public int [][] shiftLeft(int matrix [][], int count)
-    {
-        if (matrix[0].length < count)
-        {
+    public static int [][] shiftLeft(int matrix [][], int count) {
+        if (matrix[0].length < count) {
             System.out.println("Do not removed.");
             return matrix;
         }
@@ -53,6 +51,25 @@ public class Utils {
             for (int j = 0; j < matrix[i].length - count; j++) {
                 result[i][j] = matrix[i][count + j];
             }
+        }
+        return result;
+    }
+
+    public static int [] readArray(String filePath) {
+        int result [] = null;
+        try {
+            Scanner s = new Scanner(new File(filePath));
+            int arrayLength = s.nextInt();
+            result = new int[arrayLength];
+
+            int index = 0;
+            while (s.hasNextInt()) {
+                result[index] = s.nextInt();
+                index++;
+            }
+            s.close();
+        } catch (IOException i) {
+            System.out.println("Error : " + i);
         }
         return result;
     }
