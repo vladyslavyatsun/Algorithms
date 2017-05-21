@@ -91,13 +91,42 @@ public class Sorter {
         public abstract int partition(int [] array, int start, int end);
     }
 
-    public void quickSort(int [] array, int start, int end, PartitionType partitionType)
-    {
+    public void quickSort(int [] array, int start, int end, PartitionType partitionType) {
         if (start < end)
         {
             int indexOfBasicElement = partitionType.partition(array, start, end);
             quickSort(array, start, indexOfBasicElement - 1, partitionType);
             quickSort(array, indexOfBasicElement + 1, end, partitionType);
         }
+    }
+
+    /**
+     * @param array - string array. Allow use symbols: abcdefghijklmnopqrstuvwxyz.
+     *             Elements must have equal length.
+     */
+    public String [] radixSort(String [] array) {
+        String [] result = array;
+        for (int i =  array[0].length() - 1; i >= 0; i--) {
+            result = lineSort(result, i);
+        }
+        return result;
+    }
+
+    private String [] lineSort(String [] array, int index) {
+        // number of first symbol(a) is 97, number of last symbol(z) is 122
+        int [] countArray = new int[122 - 97 + 1];
+        String [] resultArray = new String[array.length];
+        for (int i = 0; i < array.length; i++) {
+            countArray[array[i].charAt(index) - 97]++;
+        }
+
+        for (int i = 1; i < countArray.length; i++) {
+            countArray[i] += countArray[i-1];
+        }
+
+        for (int i = array.length - 1; i >= 0; i--) {
+            resultArray[--countArray[array[i].charAt(index) - 97]] = array[i];
+        }
+        return resultArray;
     }
 }
