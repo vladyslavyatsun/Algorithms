@@ -15,7 +15,7 @@ public class Utils {
      * @param filePath - file path
      * @return matrix
      */
-    public static int [][] readMatrix(String filePath) {
+    public static int [][] readIntegerMatrix(String filePath) {
         int matrix[][] = null;
         try {
             Scanner s = new Scanner(new File(filePath));
@@ -55,7 +55,7 @@ public class Utils {
         return result;
     }
 
-    public static int [] readArray(String filePath) {
+    public static int [] readIntegerArray(String filePath) {
         int result [] = null;
         try {
             Scanner s = new Scanner(new File(filePath));
@@ -65,6 +65,25 @@ public class Utils {
             int index = 0;
             while (s.hasNextInt()) {
                 result[index] = s.nextInt();
+                index++;
+            }
+            s.close();
+        } catch (IOException i) {
+            System.out.println("Error : " + i);
+        }
+        return result;
+    }
+
+    public static String [] readStringArray(String filePath) {
+        String result [] = null;
+        try {
+            Scanner s = new Scanner(new File(filePath));
+            int arrayLength = s.nextInt();
+            result = new String[arrayLength];
+            s.nextLine();
+            int index = 0;
+            while (s.hasNextLine()) {
+                result[index] = s.nextLine();
                 index++;
             }
             s.close();

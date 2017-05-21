@@ -19,7 +19,7 @@ public class InversionCounterTest {
 
     @Test
     public void testInversion() {
-        int [][] matrix = Utils.shiftLeft(Utils.readMatrix("src/test/data/testInversion1"), 1);
+        int [][] matrix = Utils.shiftLeft(Utils.readIntegerMatrix("src/test/data/testInversion1"), 1);
         assertEquals(8, inversionCounter.inversionCount(matrix[0], matrix[1]));
         assertEquals(5, inversionCounter.inversionCount(matrix[0], matrix[2]));
         assertEquals(2, inversionCounter.inversionCount(matrix[0], matrix[3]));
@@ -28,14 +28,14 @@ public class InversionCounterTest {
 
     @Test
     public void controlTestInversion1() {
-        int [][] matrix = Utils.shiftLeft(Utils.readMatrix("src/test/data/testInversion2"), 1);
+        int [][] matrix = Utils.shiftLeft(Utils.readIntegerMatrix("src/test/data/testInversion2"), 1);
         assertEquals(7, inversionCounter.inversionCount(matrix[451], matrix[99]));
         assertEquals(0, inversionCounter.inversionCount(matrix[862], matrix[28]));
     }
 
     @Test
     public void controlTestInversion2() {
-        int [][] matrix = Utils.shiftLeft(Utils.readMatrix("src/test/data/testInversion3"), 1);
+        int [][] matrix = Utils.shiftLeft(Utils.readIntegerMatrix("src/test/data/testInversion3"), 1);
         assertEquals(2368, inversionCounter.inversionCount(matrix[617], matrix[0]));
         assertEquals(2483, inversionCounter.inversionCount(matrix[950], matrix[177]));
     }
