@@ -18,4 +18,10 @@ public class GraphTest {
         assertEquals(434821, Collections.max(result).longValue());
     }
 
+    @Test
+    public void dijkstraTest() throws Exception {
+        Graph graph = new Graph("src/test/data/graph.txt");
+        System.out.println(graph.dijkstra(100562, 1070345));
+    }
+
 }
